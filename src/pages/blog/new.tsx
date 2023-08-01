@@ -31,9 +31,7 @@ export default function Blog() {
         error: "Error!",
       })
       .catch(() => null);
-    const id = create.data;
-    alert(id)
-    router.push(`/blog/${id}`).catch(() => null);
+    void createTx.then((id) => router.push(`/blog/${id}`).catch(() => null));
   };
   return (
     <Layout>
@@ -44,14 +42,15 @@ export default function Blog() {
         className="my-20 grid w-[80vw] grid-cols-1 gap-5 lg:w-[50vw]"
       >
         <input
-          className="rounded-md p-1 text-black"
+          className="rounded-md px-1 py-5 text-2xl text-black"
           placeholder="Title"
           {...register("title", { minLength: 1 })}
         ></input>
         <textarea
-          className="h-[100vh] rounded-md p-1 text-black lg:min-w-[50vw]"
+          className="resize-none rounded-md p-1 text-black lg:min-w-[50vw]"
           placeholder="Content"
           {...register("content", { minLength: 1 })}
+          rows={28}
         ></textarea>
         <button
           className="fixed right-5 top-5 rounded-md bg-[rgba(0,0,0,0.5)] p-3"

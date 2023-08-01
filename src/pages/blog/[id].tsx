@@ -13,13 +13,13 @@ export default function Blog() {
       {blogQuery.isLoading && <FadeLoader color="white" />}
       {blogQuery.isFetched && blogQuery.data && (
         <div className="lg:w-[60vw]">
-          <div className="border-b mt-20">
+          <div className="mt-20 border-b">
             <p className="text-3xl lg:text-7xl">{blogQuery.data?.title}</p>
             <p className="mt-2">
               Created at {blogQuery.data?.createdAt.toLocaleDateString()}
             </p>
           </div>
-          <ReactMarkdown className="my-10">
+          <ReactMarkdown className="my-10 mx-5">
             {blogQuery.data.content}
           </ReactMarkdown>
         </div>
