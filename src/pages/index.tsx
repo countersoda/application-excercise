@@ -24,7 +24,10 @@ export default function Home() {
           <div className="my-10 grid grid-cols-1 gap-5">
             {blogPostsQuery.data?.map((blog, key) => (
               <Link
-                className="mx-5 rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
+                className="from-top mx-5 rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
+                style={{
+                  animationDuration: `${key * 400}ms`,
+                }}
                 key={key}
                 href={`blog/${blog.id}`}
               >

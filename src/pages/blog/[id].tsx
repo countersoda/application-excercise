@@ -12,7 +12,7 @@ export default function Blog() {
     <Layout>
       {blogQuery.isLoading && <FadeLoader color="white" />}
       {blogQuery.isFetched && blogQuery.data && (
-        <div className="lg:w-[60vw]">
+        <div className="lg:w-[60vw] from-top">
           <div className="mt-20 border-b">
             <p className="text-3xl lg:text-7xl">{blogQuery.data?.title}</p>
             <p className="mt-2">

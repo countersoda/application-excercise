@@ -39,7 +39,7 @@ export default function Blog() {
         method="post"
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={handleSubmit(submit)}
-        className="my-20 grid w-[80vw] grid-cols-1 gap-5 lg:w-[50vw]"
+        className="my-20 grid w-[80vw] grid-cols-1 gap-5 lg:w-[50vw] from-top"
       >
         <input
           className="rounded-md px-1 py-5 text-2xl text-black"
