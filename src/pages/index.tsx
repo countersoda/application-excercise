@@ -17,7 +17,8 @@ export default function Home() {
         <Link href="/blog/new" className="fixed right-5 top-5">
           <FiPlusSquare size={35} />
         </Link>
-        <div className="grid grid-cols-1 gap-5">
+        <p className="text-3xl mt-10">Blogs by BRbase</p>
+        <div className="my-10 grid grid-cols-1 gap-5">
           {blogPosts?.map((blog, key) => (
             <Link
               className="rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
