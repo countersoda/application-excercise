@@ -3,9 +3,10 @@ import Link from "next/link";
 import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
 import { FiPlusSquare } from "react-icons/fi";
+import { FadeLoader } from "react-spinners";
 
 export default function Home() {
-  const blogPosts = api.blog.getAll.useQuery().data;
+  const blogPostsQuery = api.blog.getAll.useQuery();
   return (
     <>
       <Head>
@@ -17,19 +18,22 @@ export default function Home() {
         <Link href="/blog/new" className="fixed right-5 top-5">
           <FiPlusSquare size={35} />
         </Link>
-        <p className="text-3xl mt-10">Blogs by BRbase</p>
-        <div className="my-10 grid grid-cols-1 gap-5">
-          {blogPosts?.map((blog, key) => (
-            <Link
-              className="rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
-              key={key}
-              href={`blog/${blog.id}`}
-            >
-              <p>{blog.title}</p>
-              <p>Created at {blog.createdAt.toLocaleDateString()}</p>
-            </Link>
-          ))}
-        </div>
+        <p className="mt-10 text-3xl">Blogs by BRbase</p>
+        {blogPostsQuery.isLoading && <FadeLoader color="white" />}
+        {blogPostsQuery.isFetched && (
+          <div className="my-10 grid grid-cols-1 gap-5">
+            {blogPostsQuery.data?.map((blog, key) => (
+              <Link
+                className="mx-5 rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
+                key={key}
+                href={`blog/${blog.id}`}
+              >
+                <p>{blog.title}</p>
+                <p>Created at {blog.createdAt.toLocaleDateString()}</p>
+              </Link>
+            ))}
+          </div>
+        )}
       </Layout>
     </>
   );

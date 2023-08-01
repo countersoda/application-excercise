@@ -1,20 +1,29 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
+import { FadeLoader } from "react-spinners";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
-export default function Blog({}) {
+export default function Blog() {
   const router = useRouter();
   const id = router.query.id as string;
-  const blog = api.blog.getById.useQuery({ id }).data;
+  const blogQuery = api.blog.getById.useQuery({ id });
   return (
     <Layout>
-      <Link className="fixed left-5 top-5" href="/">Home</Link>
-      <div className="max-w-[50vw]">
-        <p className="text-7xl">{blog?.title}</p>
-        <p>{blog?.createdAt.toLocaleDateString()}</p>
-      </div>
-      <p className="mt-10 max-w-[50vw]">{blog?.content}</p>
+      {blogQuery.isLoading && <FadeLoader color="white" />}
+      {blogQuery.isFetched && blogQuery.data && (
+        <div className="lg:w-[60vw]">
+          <div className="mt-20 border-b">
+            <p className="text-3xl lg:text-7xl">{blogQuery.data?.title}</p>
+            <p className="mt-2">
+              Created at {blogQuery.data?.createdAt.toLocaleDateString()}
+            </p>
+          </div>
+          <ReactMarkdown className="my-10 mx-5">
+            {blogQuery.data.content}
+          </ReactMarkdown>
+        </div>
+      )}
     </Layout>
   );
 }
