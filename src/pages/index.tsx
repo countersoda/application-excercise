@@ -15,18 +15,20 @@ export default function Home() {
       </Head>
       <Layout>
         <Link href="/blog/new" className="fixed right-5 top-5">
-          <FiPlusSquare width={50} height={50} />
+          <FiPlusSquare size={35} />
         </Link>
-        {blogPosts?.map((blog, key) => (
-          <Link
-            className=" rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
-            key={key}
-            href={`blog/${blog.id}`}
-          >
-            <p>{blog.title}</p>
-            <p>Created at {blog.createdAt.toLocaleDateString()}</p>
-          </Link>
-        ))}
+        <div className="grid grid-cols-1 gap-5">
+          {blogPosts?.map((blog, key) => (
+            <Link
+              className="rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
+              key={key}
+              href={`blog/${blog.id}`}
+            >
+              <p>{blog.title}</p>
+              <p>Created at {blog.createdAt.toLocaleDateString()}</p>
+            </Link>
+          ))}
+        </div>
       </Layout>
     </>
   );
