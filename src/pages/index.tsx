@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Link href="/blog/new" className="fixed right-5 top-5">
+        <Link href="/blog/create" className="fixed right-5 top-5">
           <FiPlusSquare size={35} />
         </Link>
         <p className="mt-10 text-3xl">Blogs by BRbase</p>

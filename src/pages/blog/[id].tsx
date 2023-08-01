@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { FadeLoader } from "react-spinners";
 import Blog from "~/components/Blog";
 
-export default function ShowBlogPage() {
+export default function BlogPage() {
   const router = useRouter();
   const id = router.query.id as string;
   const blogQuery = api.blog.getById.useQuery({ id });

@@ -9,21 +9,21 @@ export default function BlogForm({ onSubmit }: IBlogForm) {
       method="post"
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={handleSubmit(onSubmit)}
-      className="from-top my-20 grid w-[80vw] grid-cols-1 gap-5 lg:w-[50vw]"
+      className="from-top grid grid-cols-1 place-items-center gap-5 lg:w-[60vw] w-[80vw]"
     >
       <input
-        className="rounded-md px-1 py-5 text-2xl text-black"
+        className="w-full rounded-md px-1 py-5 text-2xl text-black"
         placeholder="Title"
         {...register("title", { minLength: 1 })}
       ></input>
       <textarea
-        className="resize-none rounded-md p-1 text-black lg:min-w-[50vw]"
+        className="w-full resize-none rounded-md p-1 text-black"
         placeholder="Content"
         {...register("content", { minLength: 1 })}
         rows={28}
       ></textarea>
       <button
-        className="fixed right-5 top-5 rounded-md bg-[rgba(0,0,0,0.5)] p-3"
+        className="from-top grid w-[50%] grid-cols-1 place-items-center rounded-md bg-[rgba(0,0,0,0.5)] p-3 lg:max-w-[20vw]"
         type="submit"
       >
         <TfiSave />
