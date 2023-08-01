@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { type FormEvent, useCallback } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
+import { TfiSave } from "react-icons/tfi";
 
 interface IFormInput {
   title: string;
@@ -37,7 +36,7 @@ export default function Blog() {
         method="post"
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={handleSubmit(submit)}
-        className="w-[80vw] lg:w-[50vw] mt-20 grid grid-cols-1 gap-5"
+        className="my-20 grid w-[80vw] grid-cols-1 gap-5 lg:w-[50vw]"
       >
         <input
           className="rounded-md p-1 text-black"
@@ -50,10 +49,10 @@ export default function Blog() {
           {...register("content", { minLength: 1 })}
         ></textarea>
         <button
-          className="my-10 rounded-md bg-[rgba(0,0,0,0.5)] p-3"
+          className="fixed right-5 top-5 rounded-md bg-[rgba(0,0,0,0.5)] p-3"
           type="submit"
         >
-          Save
+          <TfiSave />
         </button>
       </form>
     </Layout>
