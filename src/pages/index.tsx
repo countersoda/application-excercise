@@ -21,7 +21,7 @@ export default function Home() {
         <div className="my-10 grid grid-cols-1 gap-5">
           {blogPosts?.map((blog, key) => (
             <Link
-              className="rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
+              className="rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white mx-5"
               key={key}
               href={`blog/${blog.id}`}
             >
