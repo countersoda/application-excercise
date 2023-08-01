@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
+import { FiPlusSquare } from "react-icons/fi";
 
 export default function Home() {
   const blogPosts = api.blog.getAll.useQuery().data;
@@ -13,6 +14,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <Link href="/blog/new" className="fixed right-5 top-5">
+          <FiPlusSquare width={50} height={50} />
+        </Link>
         {blogPosts?.map((blog, key) => (
           <Link
             className=" rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"

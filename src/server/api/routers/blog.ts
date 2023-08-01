@@ -10,4 +10,13 @@ export const blogRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.blogPost.findMany();
   }),
+  create: publicProcedure
+    .input(
+      z.object({ title: z.string().nonempty(), content: z.string().nonempty() })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.blogPost.create({
+        data: { title: input.title, content: input.content },
+      });
+    }),
 });

@@ -12,6 +12,6 @@ model BlogPost {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String
-  content   String
+  title     String   @db.TinyText
+  content   String   @db.Text
 }
