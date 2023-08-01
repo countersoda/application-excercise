@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
 import { FadeLoader } from "react-spinners";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import Blog from "~/components/Blog";
 
-export default function Blog() {
+export default function ShowBlogPage() {
   const router = useRouter();
   const id = router.query.id as string;
   const blogQuery = api.blog.getById.useQuery({ id });
@@ -12,17 +12,11 @@ export default function Blog() {
     <Layout>
       {blogQuery.isLoading && <FadeLoader color="white" />}
       {blogQuery.isFetched && blogQuery.data && (
-        <div className="lg:w-[60vw] from-top">
-          <div className="mt-20 border-b">
-            <p className="text-3xl lg:text-7xl">{blogQuery.data?.title}</p>
-            <p className="mt-2">
-              Created at {blogQuery.data?.createdAt.toLocaleDateString()}
-            </p>
-          </div>
-          <ReactMarkdown className="my-10 mx-5">
-            {blogQuery.data.content}
-          </ReactMarkdown>
-        </div>
+        <Blog
+          title={blogQuery.data.title}
+          content={blogQuery.data.content}
+          createdAt={blogQuery.data.createdAt}
+        />
       )}
     </Layout>
   );

@@ -4,6 +4,7 @@ import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
 import { FiPlusSquare } from "react-icons/fi";
 import { FadeLoader } from "react-spinners";
+import BlogPreview from "~/components/BlogPreview";
 
 export default function Home() {
   const blogPostsQuery = api.blog.getAll.useQuery();
@@ -23,17 +24,7 @@ export default function Home() {
         {blogPostsQuery.isFetched && (
           <div className="my-10 grid grid-cols-1 gap-5">
             {blogPostsQuery.data?.map((blog, key) => (
-              <Link
-                className="from-top mx-5 rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
-                style={{
-                  animationDuration: `${key * 400}ms`,
-                }}
-                key={key}
-                href={`blog/${blog.id}`}
-              >
-                <p>{blog.title}</p>
-                <p>Created at {blog.createdAt.toLocaleDateString()}</p>
-              </Link>
+              <BlogPreview key={key} blog={blog} />
             ))}
           </div>
         )}
