@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  p {
+    @apply m-1 p-2;
+  }
+  ul,
+  ol,
+  menu {
+    @apply m-1 list-disc p-2;
+  }
+}
+
+html {
+    font-family: "Open sans";
+}

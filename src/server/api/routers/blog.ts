@@ -15,8 +15,9 @@ export const blogRouter = createTRPCRouter({
       z.object({ title: z.string().nonempty(), content: z.string().nonempty() })
     )
     .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.blogPost.create({
+      const blogPost = await ctx.prisma.blogPost.create({
         data: { title: input.title, content: input.content },
       });
+      return blogPost.id
     }),
 });

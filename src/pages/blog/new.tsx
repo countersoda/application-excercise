@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import Layout from "~/components/Layout";
 import { api } from "~/utils/api";
 import { TfiSave } from "react-icons/tfi";
+import { useRouter } from "next/router";
 
 interface IFormInput {
   title: string;
@@ -12,6 +13,7 @@ interface IFormInput {
 export default function Blog() {
   const { register, handleSubmit } = useForm<IFormInput>();
   const create = api.blog.create.useMutation();
+  const router = useRouter();
   const submit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     const { title, content } = data;
     if (title === "" || content === "") {
@@ -29,6 +31,9 @@ export default function Blog() {
         error: "Error!",
       })
       .catch(() => null);
+    const id = create.data;
+    alert(id)
+    router.push(`/blog/${id}`).catch(() => null);
   };
   return (
     <Layout>
