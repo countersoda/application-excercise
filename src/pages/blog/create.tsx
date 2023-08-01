@@ -31,7 +31,7 @@ export default function CreateBlogPage() {
 
   return (
     <Layout>
-      <h1 className="mb-10">Create a new blog!</h1>
+      <h1 className="mt-20 mb-10">Create a new blog!</h1>
       <BlogForm onSubmit={submit}></BlogForm>
     </Layout>
   );

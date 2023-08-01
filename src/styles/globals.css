@@ -17,6 +17,9 @@
   menu {
     @apply m-1 list-disc p-2;
   }
+  pre {
+    @apply rounded-md bg-[rgba(0,0,0,0.8)] p-2 overflow-x-scroll;
+  }
 }
 
 html {
