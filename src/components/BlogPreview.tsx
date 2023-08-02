@@ -18,7 +18,9 @@ export default function BlogPreview({
       href={`blog/${blog.id}`}
     >
       <p>{blog.title}</p>
-      <p>Created at {blog.createdAt.toLocaleDateString()}</p>
+      {blog.createdAt && (
+        <p>Created at {blog.createdAt.toLocaleDateString()}</p>
+      )}
     </Link>
   );
 }
