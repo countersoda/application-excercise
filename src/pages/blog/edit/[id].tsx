@@ -12,9 +12,11 @@ export default function BlogEditPage() {
   const router = useRouter();
   const id = router.query.id as string;
   const blogQuery = api.blog.getById.useQuery({ id });
+
   if (blogQuery.isFetched && !blogQuery.data) void router.push("/");
 
   const update = api.blog.update.useMutation();
+
   const submit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     const { title, content } = data;
     if (title === "" || content === "") {

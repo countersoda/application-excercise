@@ -11,9 +11,6 @@ export default function BlogPreview({
   return (
     <Link
       className="from-top mx-5 rounded-md bg-[rgba(0,0,0,0.4)] p-5 text-white"
-      style={{
-        animationDuration: `${key * 400}ms`,
-      }}
       key={key}
       href={`blog/${blog.id}`}
     >
