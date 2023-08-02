@@ -45,11 +45,15 @@ export default function BlogForm({ onSubmit, content, title }: IBlogForm) {
       {isPreview && title && content && (
         <Blog title={watchTitle} content={watchContent} />
       )}
-      <div className="grid grid-cols-2 gap-5 fixed bottom-5">
+      <div className="fixed bottom-5 grid grid-cols-2 gap-5 lg:absolute">
         <button
           className="from-top grid grid-cols-1 place-items-center rounded-md bg-[rgba(0,0,0,0.5)] p-3"
           type="button"
-          onClick={() => setIsPreview(!isPreview)}
+          onClick={() =>
+            setIsPreview(
+              !isPreview && title !== undefined && content !== undefined
+            )
+          }
         >
           Preview
         </button>
