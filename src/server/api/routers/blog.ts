@@ -8,7 +8,7 @@ export const blogRouter = createTRPCRouter({
       return ctx.prisma.blogPost.findUnique({ where: { id: input.id } });
     }),
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.blogPost.findMany();
+    return ctx.prisma.blogPost.findMany({ orderBy: { createdAt: "desc" } });
   }),
   create: publicProcedure
     .input(
