@@ -1,6 +1,9 @@
 import { type SubmitHandler } from "react-hook-form";
 
 export interface IBlogForm {
+  id?: string;
+  title?: string;
+  content?: string;
   onSubmit: SubmitHandler<IFormInput>;
 }
 

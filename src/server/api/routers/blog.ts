@@ -18,6 +18,21 @@ export const blogRouter = createTRPCRouter({
       const blogPost = await ctx.prisma.blogPost.create({
         data: { title: input.title, content: input.content },
       });
-      return blogPost.id
+      return blogPost.id;
+    }),
+  update: publicProcedure
+    .input(
+      z.object({
+        title: z.string().nonempty(),
+        content: z.string().nonempty(),
+        id: z.string().nonempty(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const blogPost = await ctx.prisma.blogPost.update({
+        where: { id: input.id },
+        data: { title: input.title, content: input.content },
+      });
+      return blogPost.id;
     }),
 });

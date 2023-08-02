@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import BlogForm from "~/components/BlogForm";
 import { type IFormInput } from "~/types";
 
-export default function CreateBlogPage() {
+export default function BlogCreatePage() {
   const create = api.blog.create.useMutation();
   const router = useRouter();
   const submit: SubmitHandler<IFormInput> = (data: IFormInput) => {
