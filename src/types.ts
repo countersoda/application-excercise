@@ -16,5 +16,5 @@ export interface IBlog {
   id?: string;
   title: string;
   content: string;
-  createdAt: Date;
+  createdAt?: Date;
 }
