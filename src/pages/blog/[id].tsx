@@ -10,7 +10,7 @@ export default function BlogPage() {
   const router = useRouter();
   const id = router.query.id as string;
   const blogQuery = api.blog.getById.useQuery({ id });
-  if (blogQuery.isFetched && !blogQuery.data) router.back();
+  if (blogQuery.isFetched && !blogQuery.data) void router.push("/");
   return (
     <Layout>
       <Link
