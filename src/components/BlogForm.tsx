@@ -9,15 +9,14 @@ export default function BlogForm({ onSubmit, content, title }: IBlogForm) {
   const watchTitle = useWatch({
     control,
     name: "title",
-    defaultValue: title,
+    defaultValue: title ?? "",
   });
   const watchContent = useWatch({
     control,
     name: "content",
-    defaultValue: content,
+    defaultValue: content ?? "",
   });
   const [isPreview, setIsPreview] = useState(false);
-
   return (
     <form
       method="post"
@@ -42,17 +41,15 @@ export default function BlogForm({ onSubmit, content, title }: IBlogForm) {
           ></textarea>
         </>
       )}
-      {isPreview && title && content && (
+      {isPreview && watchTitle && watchContent && (
         <Blog title={watchTitle} content={watchContent} />
       )}
-      <div className="fixed bottom-5 grid grid-cols-2 gap-5 lg:absolute">
+      <div className="grid grid-cols-2 gap-5">
         <button
           className="from-top grid grid-cols-1 place-items-center rounded-md bg-[rgba(0,0,0,0.5)] p-3"
           type="button"
           onClick={() =>
-            setIsPreview(
-              !isPreview && title !== undefined && content !== undefined
-            )
+            setIsPreview(!isPreview && watchTitle !== "" && watchContent !== "")
           }
         >
           Preview

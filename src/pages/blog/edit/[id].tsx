@@ -12,6 +12,8 @@ export default function BlogEditPage() {
   const router = useRouter();
   const id = router.query.id as string;
   const blogQuery = api.blog.getById.useQuery({ id });
+  if (blogQuery.isFetched && !blogQuery.data) router.back();
+  
   const update = api.blog.update.useMutation();
   const submit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     const { title, content } = data;
@@ -36,7 +38,7 @@ export default function BlogEditPage() {
   return (
     <Layout>
       <DeleteButton
-        className="right-5 top-5 bg-[rgba(0,0,0,0.4)] p-3 rounded-md fixed"
+        className="fixed right-5 top-5 rounded-md bg-[rgba(0,0,0,0.4)] p-3"
         id={id}
       />
       {blogQuery.isLoading && <FadeLoader color="white" />}
