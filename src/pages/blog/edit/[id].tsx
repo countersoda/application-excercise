@@ -6,6 +6,7 @@ import BlogForm from "~/components/BlogForm";
 import { type IFormInput } from "~/types";
 import { type SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
+import DeleteButton from "~/components/DeleteButton";
 
 export default function BlogEditPage() {
   const router = useRouter();
@@ -34,6 +35,10 @@ export default function BlogEditPage() {
   };
   return (
     <Layout>
+      <DeleteButton
+        className="right-5 top-5 bg-[rgba(0,0,0,0.4)] p-3 rounded-md fixed"
+        id={id}
+      />
       {blogQuery.isLoading && <FadeLoader color="white" />}
       {blogQuery.isFetched && blogQuery.data && (
         <BlogForm
